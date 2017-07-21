@@ -8,7 +8,7 @@
 
 效率问题很大可能出在对内核对象的控制上与像素位置的定位上，图例中一共64个threads，使用了128个Thread Event行控制；又一共 80 x 60 = 4800个Tile。那么在一帧中Thread Event对象的状态切换就需要 128 x 2 x 4800 = 1228800 次。使用Hash进行像素定位 640 x 480 = 307200次，怎么看都够呛。 :\
 
-其实换掉Event不适用内核对象，单纯使用bool值作为开关同样效率不高。类似过程代码可以[点击查看](https://github.com/solaxu/Codes/blob/master/multi_thread_to_fill_matrix.cpp)。而且从严格意义上讲，也并非是采用内存池的方式对像素进行填充，因为每次都要等待一个Tile完成才能转入下一个Tile。
+其实换掉Event不使用内核对象，单纯使用bool值作为开关同样效率不高。类似过程代码可以[点击查看](https://github.com/solaxu/Codes/blob/master/multi_thread_to_fill_matrix.cpp)。而且从严格意义上讲，也并非是采用内存池的方式对像素进行填充，因为每次都要等待一个Tile完成才能转入下一个Tile。
 
 对两篇文章的通读，大概明白了Tile-Based是这样工作的：
 
