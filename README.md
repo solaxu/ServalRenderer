@@ -13,8 +13,8 @@
 
 主要参考文献：
 
-1. 朱玥, Tile-Based图形处理方法及高质量图形算法设计. Phd Thsis, USTC, 2012. from cnki.
-2. 沈阳, 基于SIMD指令的多核软件渲染器的设计与实现. Master Thsis, ZJU, 2015. from cnki.
+1. 朱玥, Tile-Based图形处理方法及高质量图形算法设计. Phd Thesis, USTC, 2012. from cnki.
+2. 沈阳, 基于SIMD指令的多核软件渲染器的设计与实现. Master Thesis, ZJU, 2015. from cnki.
 
 文献[1]虽然是嵌入式方向的，不过同样可以借鉴。两者都采用Middle-Sort方式进行Tile-BasedTile-Based光栅化，但文献[1]的实现包含了一套完整的可兼容OpenGL ES的指令系统，同时对嵌入式移动设备做了针对性处理，文献[2]则单纯只包含了一个软件渲染器。因此这个坑主要依据文献[1]及其援引进行填补，文献[2]及其援引为辅。
 
