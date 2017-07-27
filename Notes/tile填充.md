@@ -6,7 +6,7 @@
 * Library: SDL2.0, 
 * CPU: Intel i5, 7200U, 2 Cores, 4 Threads.
 
-[07.27](https://github.com/solaxu/ServalRenderer/blob/master/Notes/Pics/new_tile_fill.png)
+![07.27](https://github.com/solaxu/ServalRenderer/blob/master/Notes/Pics/new_tile_fill.png)
 
 -------------------------
 
