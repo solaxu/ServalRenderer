@@ -1,3 +1,15 @@
+2017.07.27 :
+
+按照线程池的模式对Tile进行了填充，有别于之前的方式，效果好了很多。填充过程降低到debug模式下35ms一帧，release模式下5ms一帧。
+
+环境
+* Library: SDL2.0, 
+* CPU: Intel i5, 7200U, 2 Cores, 4 Threads.
+
+[07.27](https://github.com/solaxu/ServalRenderer/blob/master/Notes/Pics/new_tile_fill.png)
+
+-------------------------
+
 尝试了一种Tile填充方式：使用单个线程填绘制充单个Pixel，其实这并不算是Tile-Based的东西。
 
 线程通过事件控制进行绘制与等待，每个线程在执行的时候根据其线程id来获取其计算到的当前Tile的对应位置的像素值。
