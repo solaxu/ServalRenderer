@@ -1,3 +1,14 @@
+
+2017.07.28:
+
+目前打算是允许用户一次性设置 8 个 Vertex Buffer 进来，根据 Vertex Declaration 来进行 Vertex Transform, 然后根据 Vertex Transform 的结果（由 Vertex Shader决定）得到 Pixel Shader的输入流声明，再经过 Pixel Shader 得到 Pixel Fragment，最后根据当前渲染状态得到最终的 Pixel 输出。
+
+由此而带来了中间缓存的一些问题：
+
+1. Vertex Shader 的输入 Stream 与 Pixel Sahder 的输入 Stream 极有可能不一样，因此应该分开存放。
+2. 渲染批次问题，这是与所谓的sub-frame相关的。目前是这样的：若向 renderer 提交一个批次，则该批次应当被缓存到 Vertex Shader 的 Stream Pool 中，批次提交的命令由 DrawPrimitive 来完成。目前是这样规定的：用户在每一次 SetVertexBuffer 与SetIndexBuffer 之后应当调用 DrawPrimitive 来提交本批次，Renderer 将该批次渲染到 Render Target 中。如果该批次提交的量过大，则按照实际情况应当分为若干个子批次进行提交（也就是所谓的 sub-frame ），但是这里由于是使用 Software 进行模拟，因此可以将 Stream Pool 的缓存设置得足够大来规避这个问题。
+
+------------
 影响绘制速率的一个关键因素就是提交批次，因此需要在进行绘制之前对数据及逆行中间缓存处理，以提高程序的数据局部性，从而合理利用硬件缓存，提升Cache命中率，提高程序效率。
 
 # 概览
