@@ -1,4 +1,5 @@
 #include "CSDLEnv.h"
+#include "CRasterizeTile.h"
 
 CSDLEnv::CSDLEnv():win_width(0), win_height(0), win_pixel_bits_width(32), 
 	win(nullptr), renderer(nullptr), win_surface(nullptr)
@@ -44,6 +45,12 @@ SDL_Surface* CSDLEnv::GetWindowSurface()
 bool CSDLEnv::Create(int width, int height, int pixel_bits_width)
 {
 	assert(pixel_bits_width == win_pixel_bits_width);
+	int col = width / CRasterizeTile::Tile_Size;
+	int row = height / CRasterizeTile::Tile_Size;
+	int remainder_w = width % CRasterizeTile::Tile_Size;
+	int remainder_h = height % CRasterizeTile::Tile_Size;
+	width = (remainder_w > 0 ? col + 1 : col) *  CRasterizeTile::Tile_Size;
+	height = (remainder_h > 0 ? row + 1 : row) * CRasterizeTile::Tile_Size;
 
 	auto code = SDL_Init(SDL_INIT_VIDEO);
 
