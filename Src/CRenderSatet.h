@@ -1,0 +1,24 @@
+#pragma once
+
+#include "SLG_header.h"
+
+enum ERendererState
+{
+	CULL_MODE_CW = 2,
+	CILL_MODE_CCW = 4,
+
+	CMP_EUQAL = 7,
+	CMP_GREATER = 8,
+	CMP_LESS = 9,
+	CMP_GREATER_EQUAL = 10,
+	CMP_LESS_EQUAL = 11,
+
+	// sampler state
+	TEXTURE_FILTER_POINT = 16,
+	TEXTURE_FILTER_LINEAR = 17,
+	TEXTURE_FILTER_ANISOTROPIC = 18,
+	
+	TEXTURE_MAG_FILTER = 19,
+	TEXTURE_MIN_FILTER = 20,
+	TEXTURE_MIP_FILTER = 21,
+};
