@@ -31,11 +31,10 @@
 * 对于点图元：不需要插值，略。
 ```
 
-下图是对随机的16条带有颜色的直线进行插值的结果：
+下图是对随机的16条带有颜色的采用HET方式进行绘制的结果：
+
 ![HET_LINES](https://github.com/solaxu/ServalRenderer/blob/master/Notes/Pics/HET_LINES.png)
 
 需要注意的是，对于插值的结果，要进行额外保存，以便于PixelProcess对插值结果进行计算，已得到最终效果。由于采用多线程，插值结果与PixelProc运算结果都应当保存在每一个线程专用的对应地址中。
 
 另外，对线图元和三角形图元进行插值的时候，需要知道 PS input stream 的输入格式，这需要额外的一个接口来告知 Renderer。在HLSL/GLSL中这一过程是通过 shader 的 input stream declaration 来告知的（layout, in, out, etc）。
-
-下图是 HET 方式绘制
