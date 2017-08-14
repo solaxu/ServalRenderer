@@ -35,6 +35,9 @@
 
 ![HET_LINES](https://github.com/solaxu/ServalRenderer/blob/master/Notes/Pics/HET_LINES.png)
 
+效果不怎么样。
+
+
 需要注意的是，对于插值的结果，要进行额外保存，以便于PixelProcess对插值结果进行计算，已得到最终效果。由于采用多线程，插值结果与PixelProc运算结果都应当保存在每一个线程专用的对应地址中。
 
 另外，对线图元和三角形图元进行插值的时候，需要知道 PS input stream 的输入格式，这需要额外的一个接口来告知 Renderer。在HLSL/GLSL中这一过程是通过 shader 的 input stream declaration 来告知的（layout, in, out, etc）。
