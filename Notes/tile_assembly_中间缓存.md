@@ -137,7 +137,7 @@ Tile-Based结构的相关显示算法大致分为三类：直接法、两步法�
                 move left for next pixel
         else then:
             while current pixel_state == outside do:
-                move right for nect pixel
+                move right for next pixel
     else then:
         if pixel_state == inside then:
             while current pixel_state == inside do:
